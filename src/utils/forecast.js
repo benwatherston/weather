@@ -15,7 +15,7 @@ const forecast = (latitude, longitude, callback) => {
       callback('Unable to find location', undefined);
     } else {
       const { temperature } = body.currently;
-      const { precipProbability } = body.hourly;
+      const { precipProbability } = body.hourly.data[0];
       const { summary } = body.daily.data[0];
 
       callback(
