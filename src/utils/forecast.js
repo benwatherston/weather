@@ -16,16 +16,20 @@ const forecast = (latitude, longitude, callback) => {
     } else {
       const { temperature } = body.currently;
       const { precipProbability } = body.hourly.data[0];
-      const { summary } = body.daily.data[0];
+      const { summary, temperatureHigh, temperatureLow } = body.daily.data[0];
 
       callback(
         undefined,
         summary +
           ' It is currently ' +
           temperature +
-          ' degrees. There is a ' +
+          '°C. There is a ' +
           precipProbability +
-          '% chance of rain.'
+          '% chance of rain. The temperature high is ' +
+          temperatureHigh +
+          '°C and a temperature low of ' +
+          temperatureLow +
+          '°C'
       );
     }
   });
